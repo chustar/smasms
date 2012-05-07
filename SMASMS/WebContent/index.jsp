@@ -19,8 +19,62 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>SMASMS - Stock Mood Analysis using Social Media Streams</title>
     <link rel="stylesheet" href="styles/styles.css" type="text/css" media="screen">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    <!-- // shields up
+    jQuery.fn.onEnter = function(callback)
+    {
+        this.keyup(function(e)
+            {
+                if(e.keyCode == 13)
+                {
+                    e.preventDefault();
+                    if (typeof callback == 'function')
+                        callback.apply(this);
+                }
+            }
+        );
+        return this;
+    }
+
+    $(document).ready(function() {
+    	$('#response').hide();
+        $('#tickerform').submit(function(e) {
+            e.preventDefault();
+
+//             $.ajax({type: 'POST',
+//                     url: '/analyze',
+//                     data: {
+//                         'ticker': $('#ticker').val(),
+//                     },
+//                     success: function(json) {
+	// do stuff with the json data here
+//                     },
+//                     dataType: 'json'});
+
+
+			// temporary code, eventually this should move into the 'success' condition of the AJAX call
+			$('#getstarted').fadeOut(function() {
+				$('#response').html('You entered: ' + $('#ticker').val()).fadeIn();
+			});
+        });
+    });
+    // shields down -->
+    </script>
 </head>
 <body>
-	<img class="centered-block" src="/images/smasms.png" alt="SMASMS - Stock Mood Analysis using Social Media Streams" style="width: 432px; height: 73px"/>
+	<div id="header" style="width: 432px; height: 73px; margin: auto;">
+		<img src="images/smasms.png" alt="SMASMS - Stock Mood Analysis using Social Media Streams" style="width: 432px; height: 73px"/>
+	</div>
+	
+	<div id="getstarted" style="background-image: url(images/getstarted.png); width: 510px; height: 145px; margin: 100px auto 10px auto;">
+		<form id="tickerform">
+			<input type="text" id="ticker" style="position: relative; left: 120px; top: 108px;"/>
+		</form>
+	</div>
+	
+    <div id="response">
+    	thing
+    </div>
 </body>
 </html>

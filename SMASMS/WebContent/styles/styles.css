@@ -5,12 +5,59 @@ body {
 	color: #333;
 	overflow-y: scroll;
 	text-rendering: optimizeLegibility;
-	background-color: #d5e9ed;
-	background-image: url(/images/bg.gif);
+	background-color: #87aec5;
+	background-image: url(../images/bg.gif);
 	background-repeat: repeat-x;
 }
 
 .centered-block {
 	text-align: center;
 	display: block;
+	margin: auto;
+}
+
+input {
+    -webkit-transition-property: -webkit-box-shadow, background;
+    -webkit-transition-duration: 0.25s;
+    padding: 6px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 1px solid #aaaaaa;
+    -moz-box-shadow: 0px 0px 2px #000;
+    -webkit-box-shadow: 0px 0px 2px #000;
+    margin-bottom: 10px;
+    background: #ffffff;
+    width: 230px;
+}
+
+input:hover {
+    -webkit-box-shadow: 0px 0px 4px #000;
+    background: #d2e6f2;
+}
+
+input:focus {
+    -webkit-box-shadow: 0px 0px 4px #000;
+    background: #d2e6f2;
+}
+
+#response {
+    border: 1px solid #aaaaaa;
+    width: 500px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    background: #cccccc;
+    background: -moz-linear-gradient(19% 75% 90deg, #ffffff, #cccccc);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#cccccc));
+    margin:50px auto;
+    padding: 20px;
+    -moz-box-shadow:0px -5px 550px #0459b7;
+    -webkit-box-shadow:0px -5px 550px #0459b7;
+}
+
+#response div {
+    margin: 5px;
+    border: 1px solid #aaaaaa;
+    font-family: sans-serif;
+    font-size: 14px;
 }
