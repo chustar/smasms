@@ -20,6 +20,7 @@
     <title>SMASMS - Stock Mood Analysis of Social Media Streams</title>
     <link rel="stylesheet" href="styles/styles.css" type="text/css" media="screen">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jqBarGraph.1.1.min.js"></script>
     <script type="text/javascript">
     <!-- // shields up
     jQuery.fn.onEnter = function(callback)
@@ -61,24 +62,48 @@
     {
     	var htmlOutput = [];
     	
-    	htmlOutput.push('<div class="summary">' +
-    					'You entered: ' + json.ticker +
-    					'</div>');
+    	htmlOutput.push('<div class="header-main"><h1>' +
+    					'Analysis for: ' + json.ticker +
+    					'</h1></div>');
     	
-    	htmlOutput.push('<div class="networks">' +
-    					'% of mentions... Facebook (' + json.facebook + '), Twitter (' + json.twitter + '), Google (' + json.google + ')' +
-    					'</div>');
+    	htmlOutput.push('<div class="section-header">Customer Sentiment</div>');
+    	htmlOutput.push('<div class="section-content" id="moods-graph" style="margin: auto;"></div>');
     	
-    	htmlOutput.push('<div class="mood">' + 
-    					'Negative (' + json.negative + '), Neutral (' + json.neutral + '), Positive (' + json.positive + ')' +
-    					'</div>');
+    	htmlOutput.push('<div class="section-header">Mentions by Network</div>');
+    	htmlOutput.push('<div class="section-content" id="networks-graph" style="margin: auto;"></div>');
     	
     	$('#response').html(htmlOutput.join(''));
+    	
+    	var arrayOfData = new Array(
+    		[json.facebook, 'Facebook', '#3b5998'],
+            [json.twitter, 'Twitter', '#709397'],
+            [json.google, 'Google', '#008a0e']
+			);
+    	
     	$('#response').fadeIn();
+
+    	$('#networks-graph').jqBarGraph({ data: arrayOfData,
+    		postfix: '%',
+    		height: 250,
+    		});
+    	
+    	arrayOfData = new Array(
+        	[json.negative, 'Negative', '#e34646'],
+        	[json.neutral, 'Neutral', '#56739b'],
+        	[json.positive, 'Positive', '#60c160']
+        	);
+    	
+    	$('#moods-graph').jqBarGraph({ data: arrayOfData,
+    		postfix: '%',
+    		height: 250,
+    		});
+    	
     }
+    
     // shields down -->
     </script>
 </head>
+
 <body>
 	<div id="header" style="width: 432px; height: 73px; margin: auto;">
 		<img src="images/smasms.png" alt="SMASMS - Stock Mood Analysis of Social Media Streams" style="width: 432px; height: 73px"/>
@@ -91,7 +116,8 @@
 	</div>
 	
     <div id="response">
-    	thing
+    	If you see this, something went wrong.
     </div>
 </body>
+
 </html>

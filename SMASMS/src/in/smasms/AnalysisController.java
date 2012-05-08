@@ -39,13 +39,13 @@ public class AnalysisController extends HttpServlet {
 		obj.put("ticker", tickerSymbol);
 		
 		// TODO: DONT MAKE UP DATA!
-		obj.put("negative", 10);
-		obj.put("neutral", 20);
-		obj.put("positive", 70);
+		obj.put("negative", 26);
+		obj.put("neutral", 50);
+		obj.put("positive", 34);
 		
-		obj.put("facebook", 10);
-		obj.put("twitter", 90);
-		obj.put("google", 0);
+		obj.put("facebook", 17);
+		obj.put("twitter", 43);
+		obj.put("google", 40);
 
 		response.getWriter().println(obj);
 	}
