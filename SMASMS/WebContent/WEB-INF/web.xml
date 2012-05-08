@@ -10,13 +10,13 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description></description>
-    <display-name>HelloWorld</display-name>
-    <servlet-name>HelloWorld</servlet-name>
-    <servlet-class>in.smasms.hello.HelloWorld</servlet-class>
+    <description>Handles social network mood analysis of a stock symbol</description>
+    <display-name>AnalysisController</display-name>
+    <servlet-name>AnalysisController</servlet-name>
+    <servlet-class>in.smasms.AnalysisController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HelloWorld</servlet-name>
-    <url-pattern>/HelloWorld</url-pattern>
+    <servlet-name>AnalysisController</servlet-name>
+    <url-pattern>/analyze</url-pattern>
   </servlet-mapping>
 </web-app>

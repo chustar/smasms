@@ -17,7 +17,7 @@
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>SMASMS - Stock Mood Analysis using Social Media Streams</title>
+    <title>SMASMS - Stock Mood Analysis of Social Media Streams</title>
     <link rel="stylesheet" href="styles/styles.css" type="text/css" media="screen">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
@@ -42,29 +42,46 @@
         $('#tickerform').submit(function(e) {
             e.preventDefault();
 
-//             $.ajax({type: 'POST',
-//                     url: '/analyze',
-//                     data: {
-//                         'ticker': $('#ticker').val(),
-//                     },
-//                     success: function(json) {
-	// do stuff with the json data here
-//                     },
-//                     dataType: 'json'});
-
-
-			// temporary code, eventually this should move into the 'success' condition of the AJAX call
-			$('#getstarted').fadeOut(function() {
-				$('#response').html('You entered: ' + $('#ticker').val()).fadeIn();
-			});
+             $.ajax({type: 'GET',
+                     url: 'analyze',
+                     data: {
+                         'ticker': $('#ticker').val(),
+                     },
+                     success: function(json) {
+             			$('#getstarted').fadeOut(function() {
+             				renderJsonResponse(json);
+             				
+             			});
+             		 },
+                     dataType: 'json'});
         });
     });
+    
+    function renderJsonResponse(json)
+    {
+    	var htmlOutput = [];
+    	
+    	htmlOutput.push('<div class="summary">' +
+    					'You entered: ' + json.ticker +
+    					'</div>');
+    	
+    	htmlOutput.push('<div class="networks">' +
+    					'% of mentions... Facebook (' + json.facebook + '), Twitter (' + json.twitter + '), Google (' + json.google + ')' +
+    					'</div>');
+    	
+    	htmlOutput.push('<div class="mood">' + 
+    					'Negative (' + json.negative + '), Neutral (' + json.neutral + '), Positive (' + json.positive + ')' +
+    					'</div>');
+    	
+    	$('#response').html(htmlOutput.join(''));
+    	$('#response').fadeIn();
+    }
     // shields down -->
     </script>
 </head>
 <body>
 	<div id="header" style="width: 432px; height: 73px; margin: auto;">
-		<img src="images/smasms.png" alt="SMASMS - Stock Mood Analysis using Social Media Streams" style="width: 432px; height: 73px"/>
+		<img src="images/smasms.png" alt="SMASMS - Stock Mood Analysis of Social Media Streams" style="width: 432px; height: 73px"/>
 	</div>
 	
 	<div id="getstarted" style="background-image: url(images/getstarted.png); width: 510px; height: 145px; margin: 100px auto 10px auto;">
