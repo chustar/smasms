@@ -34,7 +34,6 @@ import com.amazonaws.services.simpledb.model.SelectResult;
  *		int neg = myDBAnalyzer.getNegativeCount();
  *		int tot = myDBAnalyzer.getTotalCount();
  *		
-
  */
 public class AnalysisOfDB {
 	private static final int NEGATIVE = -1;
