@@ -24,13 +24,13 @@ public class TwitterScraper {
 						.getResourceAsStream("AwsCredentials.properties")));
 		try {
 			String myDomain = "Tweets";
-			System.out.println("Creating domain called " + myDomain + ".\n");
-			sdb.createDomain(new CreateDomainRequest(myDomain));
+			// Remove the create domain section since its already created
+			// System.out.println("Creating domain called " + myDomain + ".\n");
+			// sdb.createDomain(new CreateDomainRequest(myDomain));
 
 			List<ReplaceableItem> tweets = searchTweets("microsoft");
 			for(ReplaceableItem tweet : tweets) {
 				sdb.putAttributes(new PutAttributesRequest(myDomain, tweet.getName(), tweet.getAttributes()));				
-				System.out.println("Saving: " + tweet.getName());
 			}
 		} catch (AmazonServiceException ase) {
 			System.out
@@ -62,6 +62,7 @@ public class TwitterScraper {
 			result = twitter.search(query);
 			for (Tweet tweet : result.getTweets()) {
 				tweets.add(new ReplaceableItem(tweet.getFromUser() + ":" + tweet.getCreatedAt().toString()).withAttributes(
+						new ReplaceableAttribute("ID", tweet.getFromUser() + ":" + tweet.getCreatedAt().toString(), false),
 						new ReplaceableAttribute("Username", tweet.getFromUser(), true),
 						new ReplaceableAttribute("Tweet", tweet.getText(), true),
 						new ReplaceableAttribute("Date", tweet.getCreatedAt().toString(), true)));
