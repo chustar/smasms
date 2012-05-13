@@ -39,6 +39,15 @@ public class AnalysisController extends HttpServlet {
 		obj.put("ticker", tickerSymbol);
 		
 		// TODO: DONT MAKE UP DATA!
+		
+		/* Uncomment to try gettin Data
+		//get values for Tweets DataBase
+		AnalysisOfDB myDBAnalyzer = new AnalysisOfDB("Tweets", "Tweet");
+		int pos = myDBAnalyzer.getPositiveCount();
+		int neu = myDBAnalyzer.getNeutralCount();
+		int neg = myDBAnalyzer.getNegativeCount();
+		int tot = myDBAnalyzer.getTotalCount();
+		*/
 		obj.put("negative", 26);
 		obj.put("neutral", 50);
 		obj.put("positive", 34);
