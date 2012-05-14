@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="com.amazonaws.eclipse.elasticbeanstalk.jee.runtime"/>
+  <runtime name="Apache Tomcat v7.0"/>
+  <secondary-runtime name="com.amazonaws.eclipse.elasticbeanstalk.jee.runtime"/>
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="java"/>
   <fixed facet="jst.web"/>

@@ -223,7 +223,7 @@ public class AnalysisOfDB {
     	return (totalCount);
     }
     
-    /* 
+     
     public static void main(String[] args) throws Exception {
     	
         sdb = new AmazonSimpleDBClient(new PropertiesCredentials(
@@ -281,7 +281,7 @@ public class AnalysisOfDB {
         
         
     }
-    */
+    
 
 }
 
